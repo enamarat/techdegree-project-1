@@ -1,9 +1,7 @@
-// event listener to respond to "Show another quote" button clicks
-// when user clicks anywhere on the button, the "printQuote" function is called
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
 
 var quotes;
-var quoteOnScreen;
+
 
 //an array of quotes
 quotes = [
@@ -45,8 +43,8 @@ function getRandomQuote() {
 displays the values of its properties (qoute, source and other) on the web page*/
 function printQuote(quoteOnScreen) {
   var randomQuote = getRandomQuote();
-  quoteOnScreen += "<p class='quote'>" + randomQuote.quote +  "</p>";
-  quoteOnScreen += "<p class='source'>" + randomQuote.source;
+  var quoteOnScreen = "<p class='quote'>" + randomQuote.quote +  "</p>";
+  quoteOnScreen += "<p class='source'>" + randomQuote.source + "</p>";
   quoteOnScreen += "<p class='tags'>" + randomQuote.tags;
 /* a condition according to which the value of citation property is displayed on the web page*/
   if(randomQuote.citation !== null) {
@@ -57,7 +55,7 @@ function printQuote(quoteOnScreen) {
     quoteOnScreen += "<span class='year'>" + randomQuote.year + "</span>";
   }
   quoteOnScreen += "</p>";
-  document.getElementById('quote-box').innerHTML = quoteOnScreen;
+  document.getElementById('quote-box').innerHTML=quoteOnScreen;
 }
 
 // a function which gets three random numbers and uses them to compose a random color
@@ -80,8 +78,8 @@ function changeBackground() {
 // a method which makes a new quote appear on the screen in equal intervals
 setInterval(function printQuote(quoteOnScreen) {
   var randomQuote = getRandomQuote();
-  quoteOnScreen += "<p class='quote'>" + randomQuote.quote +  "</p>";
-  quoteOnScreen += "<p class='source'>" + randomQuote.source;
+  var quoteOnScreen = "<p class='quote'>" + randomQuote.quote +  "</p>";
+  quoteOnScreen += "<p class='source'>" + randomQuote.source +  "</p>";
   quoteOnScreen += "<p class='tags'>" + randomQuote.tags;
 /* a condition according to which the value of citation property is displayed on the web page*/
   if(randomQuote.citation !== null) {
@@ -92,5 +90,10 @@ setInterval(function printQuote(quoteOnScreen) {
     quoteOnScreen += "<span class='year'>" + randomQuote.year + "</span>";
   }
   quoteOnScreen += "</p>";
-  document.getElementById('quote-box').innerHTML = quoteOnScreen;
+  document.getElementById('quote-box').innerHTML=quoteOnScreen;
 }, 10000);
+
+// event listener to respond to "Show another quote" button clicks
+// when user clicks anywhere on the button, the "printQuote" function is called
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", changeBackground, false);
